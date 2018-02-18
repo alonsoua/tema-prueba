@@ -2,7 +2,7 @@
 			
 <section id="main-content">
 	
-	<!-- Loop para mostrar posts -->
+	<!-- Loop para mostrar posts de entrada -->
 	<?php if( have_posts() ) : while(have_posts()) : the_post(); ?>
 	
 	<article class="post resume">
@@ -29,10 +29,10 @@
 
 	</article>
 	<!-- Fin Loop -->
-	
+
 	<?php endwhile; else : ?>
 
-	<!-- Si no existen posts, muestra lo siguiente: -->
+	<!-- Si no existen posts de entrada, muestra lo siguiente: -->
 	<article class="post resume">
 
 		<header class="post-title">
@@ -53,11 +53,14 @@
 
 	<?php endif;?>
 
+	<?php if (get_next_posts_link() || get_previous_posts_link() ) { ?>
+
 	<div class="posts-nav cf">
-		<a href="" >&larr; Previos</a>
-		<a href="" >Recientes &rarr;</a>
+		<?php next_posts_link(__('Previos &rarr;', 'apk')); ?>
+		<?php previous_posts_link(__('&larr; Recientes', 'apk')); ?>
 	</div>
-	
+
+	<?php } ?>
 	
 </section><!-- /#main-content -->
 			
